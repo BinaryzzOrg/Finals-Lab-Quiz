@@ -76,7 +76,10 @@ public class BinarySearchTree {
 	// lca
 	public Node LowestCommonAncestor(Node pointer, Node A, Node B) {
 
-		if (pointer == null || pointer == A || pointer == B) {// check if pointer is null or pointer is == to A or B
+		if (pointer == null || pointer.getKey() == A.getKey() || pointer.getKey() == B.getKey()) {// check if pointer
+																									// is null or
+																									// pointer is == to
+																									// A or B
 			return pointer;
 		} // end if
 

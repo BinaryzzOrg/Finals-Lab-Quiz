@@ -14,12 +14,12 @@ public class Main {
 	public static void MenuScreen() {
 		sc = new Scanner(System.in);
 
-		PrintMenuChoices();
+		System.out.print(PrintMenuChoices());
 
-		switch (OperationMenu()) {
+		switch (GetUserInput(PrintMenuChoices())) {// ask for user input while passing in the menu choices printing
 		case 1:// insert
 			System.out.print("Enter Element To Insert 》 ");
-			bst.Insert(bst.getRoot(), OperationMenu());
+			bst.Insert(bst.getRoot(), GetUserInput("Enter Element To Insert 》 "));
 			break;
 		case 2:// Display
 			Display();
@@ -29,35 +29,35 @@ public class Main {
 			if (bst.IsTreeNotAvailable(bst.getRoot())) {// check if a tree is available
 			// @formatter:off
 			System.out.println("\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ Error:			   	  ┇\n" +
-								"┇ There is no tree available yet.  	  ┇\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ Msg: 				   	  ┇\n" +
-								"┇ 	\033[3mPlease create a tree first.\033[0m 	  ┇\n" +
-								"┇ \033[3m(Tree: 1 Root 1 leftChild 1 rightChild)\033[0m ┇\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+							"┇ Error:			   	  ┇\n" +
+							"┇ There is no tree available yet.  	  ┇\n" +
+							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+							"┇ Msg: 				   	  ┇\n" +
+							"┇ 	\033[3mPlease create a tree first.\033[0m 	  ┇\n" +
+							"┇ \033[3m(Tree: 1 Root 1 leftChild 1 rightChild)\033[0m ┇\n" +
+							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
 			// @formatter:on
 				break;
 			} // end if
 
 			// If there is a tree available, then run the LCA code below
-			// @formatter:off
-			System.out.print("\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ LCA:			    		  ┇\n" +
-								"┇ Please put values to Node A and Node B. ┇\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ Input: \n" +
-								"┇ Node A 》 ");
-			// @formatter:on
-			Node A = new Node(sc.nextInt());// get value for node A
+			System.out.print(PrintLCA_Menu());
+
+			Node A = new Node(GetUserInput(PrintLCA_Menu()));// get value for node A
 
 			System.out.print("┇ Node B 》 ");
-			Node B = new Node(sc.nextInt());// get value for node B
-			System.out.println("⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+			Node B = new Node(GetUserInput(PrintLCA_Menu() + A.getKey() + "\n┇ Node B 》 "));// get value for node B
+			System.out.println("⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃");
 
-			bst.LowestCommonAncestor(bst.getRoot(), A, B);// call LCA method to get the LCA
+			Node LCA;
+			LCA = bst.LowestCommonAncestor(bst.getRoot(), A, B);// call LCA method to get the LCA
+			// @formatter:off
+			System.out.print("" +
+							"┇ Output: \n" +
+							"┇ LCA: " + LCA.getKey() + "\n" +
+							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+			// @formatter:on
 			break;
 		case 4:// exit
 			System.out.println("「Exiting now...」");
@@ -76,53 +76,70 @@ public class Main {
 			// @formatter:on
 			break;
 		}// end switch
+
 		MenuScreen();// loop MenuScreen
 	}// end method
 
-	public static int OperationMenu() {// basically scans and returns the user input
+	public static int GetUserInput(String prompt) {// basically scans and returns the user input
 		sc = new Scanner(System.in);
-		if (sc.hasNextInt()) {
-			int key = sc.nextInt();
-			return key;
+
+		if (sc.hasNextInt()) {// check if input is integer
+			int key = sc.nextInt();// store it in key if it is
+			return key;// return that value
 		} // end if
+
+		// If user tried to enter non integer input, this code below runs
 		// @formatter:off
-			System.out.println("\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ Error:			    ┇\n" +
-								"┇ Input is not an integer value.    ┇\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ Msg: 				    ┇\n" +
-								"┇ \033[3mPlease enter integer/s input only\033[0m	┇\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
-			// @formatter:on
-		PrintMenuChoices();
-		return OperationMenu();
+		System.out.println("\n" +
+						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+						"┇ Error:			    ┇\n" +
+						"┇ Input is not an integer value.    ┇\n" +
+						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+						"┇ Msg: 				    ┇\n" +
+						"┇ \033[3mPlease enter integer/s input only\033[0m	┇\n" +
+						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+		// @formatter:on
+		System.out.print(prompt);// ask user again for input
+		return GetUserInput(prompt);// call this method again to get the next user input
 	}// end method
 
 	public static void Display() {
 		// @formatter:off
-			System.out.print("\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ Display:			   ┇\n" +
-								"┇ Binary Search Tree    	   ┇\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" + 
-								"┇ Output: ");
-			// @formatter:on
+		System.out.print("\n" +
+						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+						"┇ Display:			   ┇\n" +
+						"┇ Binary Search Tree    	   ┇\n" +
+						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" + 
+						"┇ Output: ");
+		// @formatter:on
 		bst.Display(bst.getRoot());
 		System.out.println("\n⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
 	}// end method
 
-	public static void PrintMenuChoices() {
+	public static String PrintMenuChoices() {
 		//@formatter:off
-		System.out.print("" + 
+		String menuAsString = "" + 
 						"━━━━━━━━━━━━━━━━━\n"+ 
 						"┃ 【 1 】 Insert	┃\n" +
 						"┃ 【 2 】 Display	┃\n" + 
 						"┃ 【 3 】 LCA 	┃\n" +
 						"┃ 【 4 】 Exit 	┃\n" + 
 						"━━━━━━━━━━━━━━━━━\n" + 
-						"》 ");
+						"》 ";
 		//@formatter:on
+		return menuAsString;
 	}// end method
 
+	public static String PrintLCA_Menu() {
+		// @formatter:off
+		String menuAsString = "\n" +
+							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+							"┇ LCA:			    		  ┇\n" +
+							"┇ Please put values to Node A and Node B. ┇\n" +
+							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+							"┇ Input: \n" +
+							"┇ Node A 》 ";
+		// @formatter:on
+		return menuAsString;
+	}// end method
 }// end class
