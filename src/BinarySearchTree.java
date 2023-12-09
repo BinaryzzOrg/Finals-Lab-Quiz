@@ -76,10 +76,9 @@ public class BinarySearchTree {
 	// lca
 	public Node LowestCommonAncestor(Node pointer, Node A, Node B) {
 
-		if (pointer == null || pointer.getKey() == A.getKey() || pointer.getKey() == B.getKey()) {// check if pointer
-																									// is null or
-																									// pointer is == to
-																									// A or B
+		if (pointer == null || pointer.getKey() == A.getKey() || pointer.getKey() == B.getKey()) {// check if pointer is
+																									// null or pointer
+																									// is == to A or B
 			return pointer;
 		} // end if
 
@@ -106,6 +105,24 @@ public class BinarySearchTree {
 
 	public boolean IsTreeNotAvailable(Node pointer) {// a method to check if root is null and doesn't
 														// have left or right child
-		return pointer == null || pointer.getLeftChild() == null || pointer.getRightChild() == null;
+		return pointer == null || pointer.getLeftChild() == null && pointer.getRightChild() == null;
 	}// end method
+
+	public Node IsKeyAvailable(Node pointer, int key) {
+
+		if (pointer == null) {
+			return null;
+		} // end if
+
+		if (key != pointer.getKey()) {
+			pointer.setLeftChild(IsKeyAvailable(pointer.getLeftChild(), key));
+			pointer.setRightChild(IsKeyAvailable(pointer.getRightChild(), key));
+
+		} else {
+			return pointer;
+		} // end if else
+
+		return null;
+	}// end if
+
 }// end class
