@@ -17,8 +17,8 @@ public class Main {
 
 		switch (GetUserInput(PrintMenuChoices())) {// ask for user input while passing in the menu choices printing
 		case 1:// insert
-			System.out.print("Enter Element To Insert 》 ");
-			bst.Insert(bst.getRoot(), GetUserInput("Enter Element To Insert 》 "));
+			System.out.print("Enter An Integer Element To Insert 》 ");
+			bst.Insert(bst.getRoot(), GetUserInput("Enter An Integer Element To Insert 》 "));
 			break;
 		case 2:// Display
 			Display();
@@ -45,10 +45,11 @@ public class Main {
 
 			Node A = new Node(GetUserInput(PrintLCA_Menu()));// get value for node A
 			A = LCA_NodeCheck(A, "A", true, null);// run node A to a checker
-
+			
 			System.out.print("┇ Node B 》 ");
 			Node B = new Node(GetUserInput(PrintLCA_Menu() + A.getKey() + "\n┇ Node B 》 "));// get value for node B
 			B = LCA_NodeCheck(B, "B", false, A);// run node B to a checker
+			System.out.println("⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃");
 
 			Node LCA;
 			LCA = bst.LowestCommonAncestor(bst.getRoot(), A, B);// call LCA method to get the LCA
@@ -146,7 +147,7 @@ public class Main {
 	public static Node LCA_NodeCheck(Node node, String str, boolean InNodeA, Node nodeAVal) {
 
 		// Node A & B checker, if their values are available in the tree
-		if (bst.IsKeyAvailable(bst.getRoot(), node.getKey()) == null) {
+		if (!bst.contains(node.getKey())) {
 			// @formatter:off
 			System.out.print("\n" +
 							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
@@ -167,14 +168,14 @@ public class Main {
 			} else {
 				System.out.print(PrintLCA_Menu());
 				System.out.print(nodeAVal.getKey() + "\n┇ Node B 》 ");
-				node = new Node(GetUserInput(PrintLCA_Menu() + node.getKey() + "\n┇ Node B 》 "));// get value for node B
+				node = new Node(GetUserInput(PrintLCA_Menu() + nodeAVal.getKey() + "\n┇ Node B 》 "));// get value for node B
 				System.out.println("⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃");
 			} // end if else
 
-			LCA_NodeCheck(node, str, InNodeA, nodeAVal);
+			return LCA_NodeCheck(node, str, InNodeA, nodeAVal);
 		} // end if
 
-		return bst.IsKeyAvailable(bst.getRoot(), node.getKey());
+		return node;
 	}// end method
 
 }// end class

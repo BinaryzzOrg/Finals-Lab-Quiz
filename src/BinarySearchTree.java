@@ -18,7 +18,6 @@ public class BinarySearchTree {
 
 	// insert
 	public Node Insert(Node pointer, int key) {
-
 		if (root == null) {// if current root is null
 			// @formatter:off
 			System.out.println("\n" +
@@ -108,21 +107,26 @@ public class BinarySearchTree {
 		return pointer == null || pointer.getLeftChild() == null && pointer.getRightChild() == null;
 	}// end method
 
-	public Node IsKeyAvailable(Node pointer, int key) {
-
-		if (pointer == null) {
-			return null;
-		} // end if
-
-		if (key != pointer.getKey()) {
-			pointer.setLeftChild(IsKeyAvailable(pointer.getLeftChild(), key));
-			pointer.setRightChild(IsKeyAvailable(pointer.getRightChild(), key));
-
-		} else {
+	//wrapper for NodeChecker method
+	//throws boolean if the key already existed in the tree
+	public boolean contains(int key) {
+		if (NodeChecker(this.root, key) != null) { //checks if the the key is already exist
+			return true;
+		}//end if
+		
+		return false; //if the key does not exist in the tree
+	}//end method
+	
+	//method that checks whether the key already existed
+	public Node NodeChecker(Node pointer, int key) {
+		if (pointer == null || pointer.getKey() == key) {//checks if the pointer is in the tree or not
 			return pointer;
-		} // end if else
+		}//end if
+		
+		if (key > pointer.getKey()) {
+			return NodeChecker(pointer.getRightChild(), key); //recur to the right side Node
+		}//end if
 
-		return null;
-	}// end if
-
+		return NodeChecker(pointer.getLeftChild(), key);//recur to the left side Node
+	}//end method
 }// end class
