@@ -24,45 +24,7 @@ public class Main {
 			Display();
 			break;
 		case 3:// Lowest Common Ancestor
-<<<<<<< HEAD
-
-			if (bst.IsTreeNotAvailable(bst.getRoot())) {// check if a tree is available
-			// @formatter:off
-			System.out.println("\n" +
-							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ Error:			   	  ┇\n" +
-							"┇ There is no tree available yet.  	  ┇\n" +
-							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ Msg: 				   	  ┇\n" +
-							"┇ 	\033[3mPlease create a tree first.\033[0m 	  ┇\n" +
-							"┇ \033[3m(Tree: 1 Root 1 leftChild 1 rightChild)\033[0m ┇\n" +
-							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
-			// @formatter:on
-				break;
-			} // end if
-
-			// If there is a tree available, then run the LCA code below
-			System.out.print(PrintLCA_Menu());
-
-			Node A = new Node(GetUserInput(PrintLCA_Menu()));// get value for node A
-			A = LCA_NodeCheck(A, "A", true, null);// run node A to a checker
-			
-			System.out.print("┇ Node B 》 ");
-			Node B = new Node(GetUserInput(PrintLCA_Menu() + A.getKey() + "\n┇ Node B 》 "));// get value for node B
-			B = LCA_NodeCheck(B, "B", false, A);// run node B to a checker
-			System.out.println("⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃");
-
-			Node LCA;
-			LCA = bst.LowestCommonAncestor(bst.getRoot(), A, B);// call LCA method to get the LCA
-			// @formatter:off
-			System.out.print("" +
-							"┇ Output: \n" +
-							"┇ LCA: " + LCA.getKey() + "\n" +
-							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
-			// @formatter:on
-=======
 			LCA();
->>>>>>> main
 			break;
 		case 4:// exit
 			System.out.println("「Exiting now...」");
@@ -209,55 +171,4 @@ public class Main {
 		//@formatter:on
 		return menuAsString;
 	}// end method
-
-<<<<<<< HEAD
-	public static String PrintLCA_Menu() {
-		// @formatter:off
-		String menuAsString = "\n" +
-							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ LCA:			    		  ┇\n" +
-							"┇ Please put values to Node A and Node B. ┇\n" +
-							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ Input: \n" +
-							"┇ Node A 》 ";
-		// @formatter:on
-		return menuAsString;
-	}// end method
-
-	public static Node LCA_NodeCheck(Node node, String str, boolean InNodeA, Node nodeAVal) {
-
-		// Node A & B checker, if their values are available in the tree
-		if (!bst.contains(node.getKey())) {
-			// @formatter:off
-			System.out.print("\n" +
-							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ Error:			   	     ┇\n" +
-							"┇ Value of node "+ str +" was not found. 	     ┇\n" +
-							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ Msg: 				   	     ┇\n" +
-							"┇ \033[3mThe value/s of the tree are the following:\033[0m ┇\n" +
-							"┇ ");
-								bst.Display(bst.getRoot());
-			System.out.println("\n⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃");
-			// @formatter:on
-
-			// print LCA menu again
-			if (InNodeA) {
-				System.out.print(PrintLCA_Menu());
-				node = new Node(GetUserInput(PrintLCA_Menu()));// get value for node A
-			} else {
-				System.out.print(PrintLCA_Menu());
-				System.out.print(nodeAVal.getKey() + "\n┇ Node B 》 ");
-				node = new Node(GetUserInput(PrintLCA_Menu() + nodeAVal.getKey() + "\n┇ Node B 》 "));// get value for node B
-				System.out.println("⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃");
-			} // end if else
-
-			return LCA_NodeCheck(node, str, InNodeA, nodeAVal);
-		} // end if
-
-		return node;
-	}// end method
-
-=======
->>>>>>> main
 }// end class
