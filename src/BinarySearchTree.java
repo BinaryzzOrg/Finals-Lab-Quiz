@@ -30,18 +30,19 @@ public class BinarySearchTree {
 								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
 			// @formatter:on
 			CreateRoot(key);// call create root
-			return null;
+			return null;// stop insert method and return nothing
 		} // end if
 
 		if (pointer == null) {// insert condition
 			pointer = new Node(key);// put the new key to pointer current node
-			return pointer;
+			return pointer;// return the pointer thats added;
 		} // end if
 
-		if (key < pointer.getKey()) {// If the key to be inserted is less than the key of the current root
-			pointer.setLeftChild(Insert(pointer.getLeftChild(), key));// recursively insert the key into the left
-																		// subtree of
-			// the current root.
+		// If the key to be inserted is less than the key of the current root
+		if (key < pointer.getKey()) {
+			// recursively insert the key into the left subtree of the current root.
+			pointer.setLeftChild(Insert(pointer.getLeftChild(), key));
+
 		} else if (key > pointer.getKey()) {// If the key is greater
 			pointer.setRightChild(Insert(pointer.getRightChild(), key));// recursively insert it into the right subtree.
 		} // end if else
@@ -74,24 +75,22 @@ public class BinarySearchTree {
 
 	// lca
 	public Node LowestCommonAncestor(Node pointer, Node A, Node B) {
-
-		if (pointer == null || pointer.getKey() == A.getKey() || pointer.getKey() == B.getKey()) {// check if pointer is
-																									// null or pointer
-																									// is == to A or B
+		// check if pointer is null or pointer key is equal to A or B keys
+		if (pointer == null || pointer.getKey() == A.getKey() || pointer.getKey() == B.getKey()) {
 			return pointer;
 		} // end if
 
-		Node tempLeftChild = LowestCommonAncestor(pointer.getLeftChild(), A, B);// store left for checking
-		Node tempRightChild = LowestCommonAncestor(pointer.getRightChild(), A, B);// store right for checking
+		Node tempLeftChild = LowestCommonAncestor(pointer.getLeftChild(), A, B);// store leftChild for checking
+		Node tempRightChild = LowestCommonAncestor(pointer.getRightChild(), A, B);// store rightChild for checking
 
-		if (tempLeftChild == null) {// if left is null, return right
+		if (tempLeftChild == null) {// if leftChild is null, return rightChild
 			return tempRightChild;
 
-		} else if (tempRightChild == null) {// if right is null, return left
+		} else if (tempRightChild == null) {// if rightChild is null, return leftChild
 			return tempLeftChild;
 		} // end if else
 
-		return pointer;// if both is not null then it is the node we are trying to find
+		return pointer;// if both is not null then it is the node that we are trying to find
 	}// end method
 
 	// custom methods
@@ -102,11 +101,12 @@ public class BinarySearchTree {
 		Main.Display();// display new root
 	}// end method
 
-	public boolean IsTreeNotAvailable(Node pointer) {// a method to check if root is null and doesn't
-														// have left or right child
+	// check if root is null and doesn't have left or right child
+	public boolean IsTreeNotAvailable(Node pointer) {
 		return pointer == null || pointer.getLeftChild() == null && pointer.getRightChild() == null;
 	}// end method
 
+<<<<<<< HEAD
 	//wrapper for NodeChecker method
 	//throws boolean if the key already existed in the tree
 	public boolean contains(int key) {
@@ -126,6 +126,24 @@ public class BinarySearchTree {
 		if (key > pointer.getKey()) {
 			return NodeChecker(pointer.getRightChild(), key); //recur to the right side Node
 		}//end if
+=======
+	// check if the key that is passed in, is available in the tree
+	public Node IsKeyAvailable(Node pointer, int key) {
+		while (key != pointer.getKey()) {// goes until key is found on the tree or pointer reaches null
+			if (key < pointer.getKey()) {// if key thats passed in is lessthan than pointer key
+				pointer = pointer.getLeftChild();// go to left
+			} else if (key > pointer.getKey()) {// else if key is greater than pointer key
+				pointer = pointer.getRightChild();// go to right
+			} // end if else
+
+			if (pointer == null) {// if pointer reaches null
+				return null;// it means, the key that was passed in was not found
+			} // end if
+		} // end while
+
+		return pointer;// returns the key thats found
+	}// end if
+>>>>>>> main
 
 		return NodeChecker(pointer.getLeftChild(), key);//recur to the left side Node
 	}//end method
