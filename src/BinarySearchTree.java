@@ -21,13 +21,13 @@ public class BinarySearchTree {
 		if (root == null) {// if current root is null
 			// @formatter:off
 			System.out.println("\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ Error:			   ┇\n" +
-								"┇ There is no root created yet.    ┇\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ Msg: 				   ┇\n" +
-								"┇ \033[3mCreating key as new root...Done!\033[0m ┇\n" +
-								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+							"┇ Error:			   ┇\n" +
+							"┇ There is no root created yet.    ┇\n" +
+							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+							"┇ Msg: 				   ┇\n" +
+							"┇ \033[3mCreating key as new root...Done!\033[0m ┇\n" +
+							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
 			// @formatter:on
 			CreateRoot(key);// call create root
 			return null;// stop insert method and return nothing

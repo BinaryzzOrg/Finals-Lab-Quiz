@@ -73,9 +73,11 @@ public class Main {
 		Node LCA = bst.LowestCommonAncestor(bst.getRoot(), A, B);// call LCA method to get the LCA
 		// @formatter:off
 			System.out.print("" +
-							"┇ Output: \n" +
-							"┇ LCA: " + LCA.getKey() + "\n" +
-							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+						"┇ Output: \n" +
+						"┇ LCA: " + LCA.getKey() + "\n" +
+						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+			System.out.println();
 			// @formatter:on
 	}// end method
 
