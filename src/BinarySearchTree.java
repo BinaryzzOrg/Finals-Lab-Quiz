@@ -49,7 +49,9 @@ public class BinarySearchTree {
 		return pointer; // return the modified root
 	}// end of method Node insert
 
-	/* This is a method for displaying the nodes and printing it consecutively using Level Order Traversal
+	/*
+	 * This is a method for displaying the nodes and printing it consecutively using
+	 * Level Order Traversal
 	 * 
 	 * The Display method performs a level-order traversal of a binary tree starting
 	 * from the root, printing the keys of each node. If the tree is empty (no
@@ -85,10 +87,10 @@ public class BinarySearchTree {
 		} // end while
 	} // end method
 
-	//This is a method for displaying the structure of the tree and its edges using level order traversal
+	// This is a method for displaying the structure of the tree and its edges using
+	// level order traversal
 	public void DisplayStructureTree(Node pointer) {
-		if (root == null) {// if root is null then show an error
-			System.out.print("\033[3mNo root available\033[0m		   ┇");
+		if (root == null) {
 			return;
 		} // end if
 
@@ -98,52 +100,59 @@ public class BinarySearchTree {
 		int height = 0;
 		do {
 			int counter = queue.size();// get the size
-			
-			if (counter == 0) {//base case
+
+			if (counter == 0) {// base case
 				break;
 			}
-			//call this method to print the spaces
+			// call this method to print the spaces
 			String list = createSpace(getHeight(root), height, "");
-			
+
 			// call this method to print the arrow lines each level
 			printArrowLines(height, counter, queue, list);
-			
+
 			System.out.println();
 			while (counter > 0) {
-				System.out.print(list);//print the space
+				System.out.print(list);// print the space
 				Node current = queue.remove();
 
-				if (current.getKey() == 0) {//if the node is null
+				if (current.getKey() == 0) {// if the node is null
 					System.out.print(" ");
-				}
-				else {
+				} else {
 					System.out.print(current.getKey());
-				}//end if else
-				
-				//adding the nodes to the queue: if the node is null, add new node that contains 0 value
+				} // end if else
+
+				// adding the nodes to the queue: if the node is null, add new node that
+				// contains 0 value
 				if (current.getLeftChild() != null) {
 					queue.add(current.getLeftChild());
-				} 
-				else {
+				} else {
 					queue.add(new Node(0));
-				}//end if else
+				} // end if else
 
 				if (current.getRightChild() != null) {
 					queue.add(current.getRightChild());
-				}
-				else {
+				} else {
 					queue.add(new Node(0));
-				}//end if else
+				} // end if else
 				counter--;
-				System.out.print(list);//print the space
-			}//end while
+				System.out.print(list);// print the space
+			} // end while
 			System.out.println();
 			height++;
-			
+
 		} while (height <= getHeight(root));// base case
 	}// end method
 
 	// lca
+	/*
+	 * The LCA method needs a pointer node, and a node A and B for the method to
+	 * find their lowest ancestor. It firts check if the pointer is null/if its left
+	 * == the key or its right == the key, if the key was found it will instantly
+	 * return the node pointer if that value. Now if the key was not found by the
+	 * first block of code, the next codes will. Those nodes stores the value for
+	 * each side, if no key is found it returns a null and if a key is found it
+	 * returns that key.
+	 */
 	public Node LowestCommonAncestor(Node pointer, Node A, Node B) {
 		// check if pointer is null or pointer key is equal to A or B keys
 		if (pointer == null || pointer.getKey() == A.getKey() || pointer.getKey() == B.getKey()) {
@@ -164,93 +173,111 @@ public class BinarySearchTree {
 	}// end method
 
 	// custom methods
+	/*
+	 * This method just creates a root if called. A key is passed as parameter to
+	 * set that key as new node.
+	 */
 	public void CreateRoot(int key) {
-		sc = new Scanner(System.in);// create sc
-		Node tempNode = new Node(key);// create tempNode to store key value
-		root = tempNode;// set tempNode as root
-		Main.Display();// display new root
+		Node tempNode = new Node(key);
+		root = tempNode;
+		Main.Display();
 	}// end method
 
-	// check if root is null and doesn't have left or right child
+	/*
+	 * This method checks if the root has no child, meaning the LCA is not possible
+	 */
 	public boolean IsTreeNotAvailable(Node pointer) {
 		return pointer == null || pointer.getLeftChild() == null && pointer.getRightChild() == null;
 	}// end method
 
 	// check if the key that is passed in, is available in the tree
+	/*
+	 * This method checks the tree if it contains the key that is passed in this
+	 * method. If no key is found, it returns null if key is found, it returns that
+	 * node.
+	 */
 	public Node IsKeyAvailable(Node pointer, int key) {
-		while (key != pointer.getKey()) {// goes until key is found on the tree or pointer reaches null
-			if (key < pointer.getKey()) {// if key thats passed in is lessthan than pointer key
-				pointer = pointer.getLeftChild();// go to left
-			} else if (key > pointer.getKey()) {// else if key is greater than pointer key
-				pointer = pointer.getRightChild();// go to right
+		while (key != pointer.getKey()) {
+			if (key < pointer.getKey()) {
+				pointer = pointer.getLeftChild();
+			} else if (key > pointer.getKey()) {
+				pointer = pointer.getRightChild();
 			} // end if else
 
-			if (pointer == null) {// if pointer reaches null
-				return null;// it means, the key that was passed in was not found
+			if (pointer == null) {
+				return null;
 			} // end if
 		} // end while
 
-		return pointer;// returns the key thats found
+		return pointer;
 	}// end method
-	
-	//get the height of the tree
-	public int getHeight(Node node) {
-		if (node != null) {
-			//compare left height to right height and return the highest number + 1
-			return Math.max(getHeight(node.getLeftChild()), getHeight(node.getRightChild()) + 1);
-		}//end if
-		
-		return 0; //if null return 0
-	}//end method
-	
-	//creating spaces to adjust each printing of nodes
+
+	/*
+	 * comment here saymo
+	 */
+	public int getHeight(Node pointer) {
+		if (pointer != null) {
+			// compare left height to right height and return the highest number + 1
+			return Math.max(getHeight(pointer.getLeftChild()), getHeight(pointer.getRightChild()) + 1);
+		} // end if
+
+		return 0; // if null return 0
+	}// end method
+
+	// creating spaces to adjust each printing of nodes
+	/*
+	 * comment here saymo
+	 */
 	public String createSpace(int trueHeight, int height, String spacing) {
 		int space = 1;
-		//the bottom level of the tree has one space and each level upward is multiplied the space by 2
+		// the bottom level of the tree has one space and each level upward is
+		// multiplied the space by 2
 		for (int i = height; i < trueHeight; i++) {
 			space *= 2;
-		}//end for
-		
-		//add space 
+		} // end for
+
+		// add space
 		for (int i = 0; i < space; i++) {
 			spacing += "	";
-		}//end for
-		
-		//make the space go back to its original value
+		} // end for
+
+		// make the space go back to its original value
 		for (int i = height; i < trueHeight; i++) {
 			space /= 2;
-		}//end for
-		
+		} // end for
+
 		return spacing;
-	}//end method
-	
-	//printing the arrow lines in each level
+	}// end method
+
+	// printing the arrow lines in each level
+	/*
+	 * comment here saymo
+	 */
 	public void printArrowLines(int height, int counter, Queue<Node> queue, String list) {
 		if (height != 0) {
 			int index = 0;
-			
-			while (counter > 0) {//base case
+
+			while (counter > 0) {// base case
 				index++;
 				Node current = queue.remove();
-				
+
 				if (current.getKey() != 0) {
-					if (index % 2 != 0) {//if the node is left child
+					if (index % 2 != 0) {// if the node is left child
 						System.out.print(list + "/");
-					}//end if
-					if (index % 2 == 0) {//if the node is right child
+					} // end if
+					if (index % 2 == 0) {// if the node is right child
 						System.out.print(list + "\\");
-					}//end if
+					} // end if
 					System.out.print(list);
-				}
-				else { //if the node is equal to zero or null
+				} else { // if the node is equal to zero or null
 					System.out.print(list + " ");
 					System.out.print(list);
-				}//end if else
-				queue.add(current);//add the current node back again to the queue
+				} // end if else
+				queue.add(current);// add the current node back again to the queue
 				counter--;
-				
-			}//end while
-			counter = queue.size();//make the counter go back to its original value
-		}//end If
-	}//end method
+
+			} // end while
+			counter = queue.size();// make the counter go back to its original value
+		} // end If
+	}// end method
 }// end class
