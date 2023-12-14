@@ -144,6 +144,15 @@ public class BinarySearchTree {
 	}// end method
 
 	// lca
+	/*
+	 * The LCA method needs a pointer node, and a node A and B for the method to
+	 * find their lowest ancestor. It firts check if the pointer is null/if its left
+	 * == the key or its right == the key, if the key was found it will instantly
+	 * return the node pointer if that value. Now if the key was not found by the
+	 * first block of code, the next codes will. Those nodes stores the value for
+	 * each side, if no key is found it returns a null and if a key is found it
+	 * returns that key.
+	 */
 	public Node LowestCommonAncestor(Node pointer, Node A, Node B) {
 		// check if pointer is null or pointer key is equal to A or B keys
 		if (pointer == null || pointer.getKey() == A.getKey() || pointer.getKey() == B.getKey()) {
@@ -164,46 +173,61 @@ public class BinarySearchTree {
 	}// end method
 
 	// custom methods
+	/*
+	 * This method just creates a root if called. A key is passed as parameter to
+	 * set that key as new node.
+	 */
 	public void CreateRoot(int key) {
-		sc = new Scanner(System.in);// create sc
-		Node tempNode = new Node(key);// create tempNode to store key value
-		root = tempNode;// set tempNode as root
-		Main.Display();// display new root
+		Node tempNode = new Node(key);
+		root = tempNode;
+		Main.Display();
 	}// end method
 
-	// check if root is null and doesn't have left or right child
+	/*
+	 * This method checks if the root has no child, meaning the LCA is not possible
+	 */
 	public boolean IsTreeNotAvailable(Node pointer) {
 		return pointer == null || pointer.getLeftChild() == null && pointer.getRightChild() == null;
 	}// end method
 
 	// check if the key that is passed in, is available in the tree
+	/*
+	 * This method checks the tree if it contains the key that is passed in this
+	 * method. If no key is found, it returns null if key is found, it returns that
+	 * node.
+	 */
 	public Node IsKeyAvailable(Node pointer, int key) {
-		while (key != pointer.getKey()) {// goes until key is found on the tree or pointer reaches null
-			if (key < pointer.getKey()) {// if key thats passed in is lessthan than pointer key
-				pointer = pointer.getLeftChild();// go to left
-			} else if (key > pointer.getKey()) {// else if key is greater than pointer key
-				pointer = pointer.getRightChild();// go to right
+		while (key != pointer.getKey()) {
+			if (key < pointer.getKey()) {
+				pointer = pointer.getLeftChild();
+			} else if (key > pointer.getKey()) {
+				pointer = pointer.getRightChild();
 			} // end if else
 
-			if (pointer == null) {// if pointer reaches null
-				return null;// it means, the key that was passed in was not found
+			if (pointer == null) {
+				return null;
 			} // end if
 		} // end while
 
-		return pointer;// returns the key thats found
+		return pointer;
 	}// end method
 
-	// get the height of the tree
-	public int getHeight(Node node) {
-		if (node != null) {
+	/*
+	 * comment here saymo
+	 */
+	public int getHeight(Node pointer) {
+		if (pointer != null) {
 			// compare left height to right height and return the highest number + 1
-			return Math.max(getHeight(node.getLeftChild()), getHeight(node.getRightChild()) + 1);
+			return Math.max(getHeight(pointer.getLeftChild()), getHeight(pointer.getRightChild()) + 1);
 		} // end if
 
 		return 0; // if null return 0
 	}// end method
 
 	// creating spaces to adjust each printing of nodes
+	/*
+	 * comment here saymo
+	 */
 	public String createSpace(int trueHeight, int height, String spacing) {
 		int space = 1;
 		// the bottom level of the tree has one space and each level upward is
@@ -226,6 +250,9 @@ public class BinarySearchTree {
 	}// end method
 
 	// printing the arrow lines in each level
+	/*
+	 * comment here saymo
+	 */
 	public void printArrowLines(int height, int counter, Queue<Node> queue, String list) {
 		if (height != 0) {
 			int index = 0;
