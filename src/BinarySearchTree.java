@@ -89,6 +89,15 @@ public class BinarySearchTree {
 
 	// This is a method for displaying the structure of the tree and its edges using
 	// level order traversal
+	/*
+	 * Like the Display() method it uses the same logic, it stores the values of every nodes including null 
+	 * values in a queue and printing it. If the node is null it adds a new node that has a value of 0 to the queue
+	 * while if the node is not null then it adds the current node in the queue. If the node is null it prints a single 
+	 * space length while if the node is not null it prints the value of node. Each printing has a space that is unique in each level,
+	 * for example if the true height of the tree is 3, then we have three levels. The bottom level has a two space length 
+	 * and multiply it by two in each level upward.
+	 * 
+	 */
 	public void DisplayStructureTree(Node pointer) {
 		if (root == null) {
 			return;
@@ -104,15 +113,15 @@ public class BinarySearchTree {
 			if (counter == 0) {// base case
 				break;
 			}
-			// call this method to print the spaces
-			String list = createSpace(getHeight(root), height, "");
+			// call this method to create spaces and store it in String space
+			String space = createSpace(getHeight(root), height, "");
 
 			// call this method to print the arrow lines each level
-			printArrowLines(height, counter, queue, list);
+			printArrowLines(height, counter, queue, space);
 
 			System.out.println();
 			while (counter > 0) {
-				System.out.print(list);// print the space
+				System.out.print(space);// print the String space
 				Node current = queue.remove();
 
 				if (current.getKey() == 0) {// if the node is null
@@ -135,7 +144,7 @@ public class BinarySearchTree {
 					queue.add(new Node(0));
 				} // end if else
 				counter--;
-				System.out.print(list);// print the space
+				System.out.print(space);// print the String space
 			} // end while
 			System.out.println();
 			height++;
@@ -146,7 +155,7 @@ public class BinarySearchTree {
 	// lca
 	/*
 	 * The LCA method needs a pointer node, and a node A and B for the method to
-	 * find their lowest ancestor. It firts check if the pointer is null/if its left
+	 * find their lowest ancestor. It first check if the pointer is null/if its left
 	 * == the key or its right == the key, if the key was found it will instantly
 	 * return the node pointer if that value. Now if the key was not found by the
 	 * first block of code, the next codes will. Those nodes stores the value for
@@ -212,21 +221,28 @@ public class BinarySearchTree {
 		return pointer;
 	}// end method
 
-	/*
-	 * comment here saymo
+	/* finding the height of the tree
+	 * 
+	 * This method uses recursive function to traverse the left child and right child nodes of the tree
+	 * Compare which has the highest values between left nodes and right nodes 
+	 * and return the value obtained add 1 because we include the root 
 	 */
 	public int getHeight(Node pointer) {
 		if (pointer != null) {
-			// compare left height to right height and return the highest number + 1
-			return Math.max(getHeight(pointer.getLeftChild()), getHeight(pointer.getRightChild()) + 1);
+			// compare left height to right height and return the highest number
+			return Math.max(getHeight(pointer.getLeftChild()), getHeight(pointer.getRightChild()) + 1); // add 1 in each traversal
 		} // end if
 
 		return 0; // if null return 0
 	}// end method
 
-	// creating spaces to adjust each printing of nodes
+	// creating spaces to adjust each printing of nodes and arrow lines for the structure
 	/*
-	 * comment here saymo
+	 * This method starts with getting the total number of levels (true height) of the tree.
+	 * Think of the bottom level of the the tree has a two space length, 
+	 * and every level upward is multiplied by two so that we can create a triangle structure
+	 * The parameter height in this method is the determinant on what level we are now in the tree
+	 * 
 	 */
 	public String createSpace(int trueHeight, int height, String spacing) {
 		int space = 1;
@@ -236,14 +252,9 @@ public class BinarySearchTree {
 			space *= 2;
 		} // end for
 
-		// add space
+		// add one tab space
 		for (int i = 0; i < space; i++) {
 			spacing += "	";
-		} // end for
-
-		// make the space go back to its original value
-		for (int i = height; i < trueHeight; i++) {
-			space /= 2;
 		} // end for
 
 		return spacing;
@@ -251,27 +262,32 @@ public class BinarySearchTree {
 
 	// printing the arrow lines in each level
 	/*
-	 * comment here saymo
+	 * This method starts with getting the node value and determining whether it is left node or right node
+	 * 
+	 * We can determine whether a node is right or left by thinking that in each level of the tree we have 
+	 * an even number nodes including the null/zero values except for the level zero or the root.
+	 * With this in mind we can use the counter parameter which is the total number of nodes in 
+	 * each level. The counter value decreases as it prints "/" or "\" in the loop. 
+	 * Counter parameter has a starting value of even, and each even value is where the left node located and 
+	 * every odd value is where the right located in each level.
 	 */
-	public void printArrowLines(int height, int counter, Queue<Node> queue, String list) {
+	public void printArrowLines(int height, int counter, Queue<Node> queue, String space) {
 		if (height != 0) {
-			int index = 0;
 
-			while (counter > 0) {// base case
-				index++;
+			while (counter > 0) {//base case
 				Node current = queue.remove();
 
 				if (current.getKey() != 0) {
-					if (index % 2 != 0) {// if the node is left child
-						System.out.print(list + "/");
+					if (counter % 2 == 0) {//if counter is even number, it is left, print slash
+						System.out.print(space + "/");
 					} // end if
-					if (index % 2 == 0) {// if the node is right child
-						System.out.print(list + "\\");
+					if (counter % 2 != 0) {//if counter is odd number, it is right, print back slash 
+						System.out.print(space + "\\");
 					} // end if
-					System.out.print(list);
+					System.out.print(space);
 				} else { // if the node is equal to zero or null
-					System.out.print(list + " ");
-					System.out.print(list);
+					System.out.print(space + " ");
+					System.out.print(space);
 				} // end if else
 				queue.add(current);// add the current node back again to the queue
 				counter--;
