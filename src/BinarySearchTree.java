@@ -49,7 +49,8 @@ public class BinarySearchTree {
 		return pointer; // return the modified root
 	}// end of method Node insert
 
-	/*
+	/* This is a method for displaying the nodes and printing it consecutively using Level Order Traversal
+	 * 
 	 * The Display method performs a level-order traversal of a binary tree starting
 	 * from the root, printing the keys of each node. If the tree is empty (no
 	 * root), it outputs an error message. Using a queue for efficient traversal,
@@ -83,6 +84,64 @@ public class BinarySearchTree {
 			} // end if
 		} // end while
 	} // end method
+
+	//This is a method for displaying the structure of the tree and its edges using level order traversal
+	public void DisplayStructureTree(Node pointer) {
+		if (root == null) {// if root is null then show an error
+			System.out.print("\033[3mNo root available\033[0m		   ┇");
+			return;
+		} // end if
+
+		Queue<Node> queue = new LinkedList<>();
+		queue.add(getRoot());
+
+		int height = 0;
+		do {
+			int counter = queue.size();// get the size
+			
+			if (counter == 0) {//base case
+				break;
+			}
+			//call this method to print the spaces
+			String list = createSpace(getHeight(root), height, "");
+			
+			// call this method to print the arrow lines each level
+			printArrowLines(height, counter, queue, list);
+			
+			System.out.println();
+			while (counter > 0) {
+				System.out.print(list);//print the space
+				Node current = queue.remove();
+
+				if (current.getKey() == 0) {//if the node is null
+					System.out.print(" ");
+				}
+				else {
+					System.out.print(current.getKey());
+				}//end if else
+				
+				//adding the nodes to the queue: if the node is null, add new node that contains 0 value
+				if (current.getLeftChild() != null) {
+					queue.add(current.getLeftChild());
+				} 
+				else {
+					queue.add(new Node(0));
+				}//end if else
+
+				if (current.getRightChild() != null) {
+					queue.add(current.getRightChild());
+				}
+				else {
+					queue.add(new Node(0));
+				}//end if else
+				counter--;
+				System.out.print(list);//print the space
+			}//end while
+			System.out.println();
+			height++;
+			
+		} while (height <= getHeight(root));// base case
+	}// end method
 
 	// lca
 	public Node LowestCommonAncestor(Node pointer, Node A, Node B) {
@@ -133,5 +192,65 @@ public class BinarySearchTree {
 
 		return pointer;// returns the key thats found
 	}// end method
-
+	
+	//get the height of the tree
+	public int getHeight(Node node) {
+		if (node != null) {
+			//compare left height to right height and return the highest number + 1
+			return Math.max(getHeight(node.getLeftChild()), getHeight(node.getRightChild()) + 1);
+		}//end if
+		
+		return 0; //if null return 0
+	}//end method
+	
+	//creating spaces to adjust each printing of nodes
+	public String createSpace(int trueHeight, int height, String spacing) {
+		int space = 1;
+		//the bottom level of the tree has one space and each level upward is multiplied the space by 2
+		for (int i = height; i < trueHeight; i++) {
+			space *= 2;
+		}//end for
+		
+		//add space 
+		for (int i = 0; i < space; i++) {
+			spacing += "	";
+		}//end for
+		
+		//make the space go back to its original value
+		for (int i = height; i < trueHeight; i++) {
+			space /= 2;
+		}//end for
+		
+		return spacing;
+	}//end method
+	
+	//printing the arrow lines in each level
+	public void printArrowLines(int height, int counter, Queue<Node> queue, String list) {
+		if (height != 0) {
+			int index = 0;
+			
+			while (counter > 0) {//base case
+				index++;
+				Node current = queue.remove();
+				
+				if (current.getKey() != 0) {
+					if (index % 2 != 0) {//if the node is left child
+						System.out.print(list + "/");
+					}//end if
+					if (index % 2 == 0) {//if the node is right child
+						System.out.print(list + "\\");
+					}//end if
+					System.out.print(list);
+				}
+				else { //if the node is equal to zero or null
+					System.out.print(list + " ");
+					System.out.print(list);
+				}//end if else
+				queue.add(current);//add the current node back again to the queue
+				counter--;
+				
+			}//end while
+			counter = queue.size();//make the counter go back to its original value
+		}//end If
+	}//end method
 }// end class
