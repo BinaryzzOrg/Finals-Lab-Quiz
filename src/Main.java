@@ -144,6 +144,9 @@ public class Main {
 		// @formatter:on
 		bst.Display(bst.getRoot());
 		System.out.println("\n⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+		
+		bst.DisplayStructureTree(bst.getRoot());
+		System.out.println();
 	}// end method
 
 	public static String PrintLCA_Menu() {// for menu looks only
