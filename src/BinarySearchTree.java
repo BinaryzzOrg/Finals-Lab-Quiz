@@ -49,29 +49,40 @@ public class BinarySearchTree {
 		return pointer; // return the modified root
 	}// end of method Node insert
 
-	// display
+	/*
+	 * The Display method performs a level-order traversal of a binary tree starting
+	 * from the root, printing the keys of each node. If the tree is empty (no
+	 * root), it outputs an error message. Using a queue for efficient traversal,
+	 * the method dequeues each node, prints its key, and enqueues its left and
+	 * right children if present. The process continues until all nodes have been
+	 * processed, resulting in a display of the binary tree's keys in a structured
+	 * order.
+	 */
 	public void Display(Node pointer) {
-		if (root == null) {// if root is null then show an error
-			System.out.print("\033[3mNo root available\033[0m		   ┇");
+		// Check if the root of the tree is null
+		if (root == null) {
+			System.out.print("No root available"); // Print an error message if the root is null
 			return;
 		} // end if
 
-		Queue<Node> queue = new LinkedList<>();
-		queue.add(getRoot());
+		Queue<Node> queue = new LinkedList<>(); // Initialize a queue for level-order traversal
+		queue.add(getRoot()); // Enqueue the root node to start traversal
 
 		while (!queue.isEmpty()) {
-			Node current = queue.remove();
-			System.out.print(current.getKey() + " ▶ ");
+			Node current = queue.remove(); // Dequeue the current node
+			System.out.print(current.getKey() + "  > "); // Print the key of the current node
 
+			// Enqueue the left child if it exists
 			if (current.getLeftChild() != null) {
 				queue.add(current.getLeftChild());
 			} // end if
 
+			// Enqueue the right child if it exists
 			if (current.getRightChild() != null) {
 				queue.add(current.getRightChild());
 			} // end if
 		} // end while
-	}// end method
+	} // end method
 
 	// lca
 	public Node LowestCommonAncestor(Node pointer, Node A, Node B) {

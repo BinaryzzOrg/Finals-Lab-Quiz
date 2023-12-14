@@ -12,7 +12,6 @@ public class Main {
 
 	// methods
 	public static void MenuScreen() {
-
 		System.out.print(PrintMenuChoices());
 
 		switch (GetUserInput(PrintMenuChoices())) {// ask for user input while passing in the menu choices printing
@@ -34,11 +33,11 @@ public class Main {
 			// @formatter:off
 			System.out.println("\n" +
 								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ Error:			    ┇\n" +
-								"┇ Input is not a valid Menu choice. ┇\n" +
+								"┇ Error: \n" +
+								"┇ Input is not a valid Menu choice. \n" +
 								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-								"┇ Msg: 				    ┇\n" +
-								"┇ \033[3mPlease enter only 1 to 4 as input\033[0m	┇\n" +
+								"┇ Msg: \n" +
+								"┇ \033[3mPlease enter only 1 to 4 as input\033[0m \n" +
 								"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
 			// @formatter:on
 			break;
@@ -52,12 +51,12 @@ public class Main {
 			// @formatter:off
 			System.out.println("\n" +
 							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ Error:			   	  ┇\n" +
-							"┇ There is no tree available yet.  	  ┇\n" +
+							"┇ Error: \n" +
+							"┇ There is no tree available yet. \n" +
 							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ Msg: 				   	  ┇\n" +
-							"┇      \033[3mPlease create a tree first.\033[0m 	  ┇\n" +
-							"┇ \033[3m(Tree:Root and leftChild or rightChild)\033[0m ┇\n" +
+							"┇ Msg: \n" +
+							"┇      \033[3mPlease create a tree first.\033[0m \n" +
+							"┇ \033[3m(Tree:Root and leftChild or rightChild)\033[0m \n" +
 							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
 			// @formatter:on
 			return;// return if no tree is available
@@ -92,11 +91,11 @@ public class Main {
 		// @formatter:off
 			System.out.print("\n" +
 							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ Error:			   	     ┇\n" +
-							"┇ Value of node "+ nodeOf +" was not found. 	     ┇\n" +
+							"┇ Error: \n" +
+							"┇ Value of node "+ nodeOf +" was not found. \n" +
 							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ Msg: 				   	     ┇\n" +
-							"┇ \033[3mThe value/s of the tree are the following:\033[0m ┇\n" +
+							"┇ Msg: \n" +
+							"┇ \033[3mThe value/s of the tree are the following:\033[0m \n" +
 							"┇ ");
 								bst.Display(bst.getRoot());//display available nodes on the tree
 			System.out.println("\n⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃");
@@ -123,11 +122,11 @@ public class Main {
 		// @formatter:off
 		System.out.println("\n" +
 						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-						"┇ Error:			    ┇\n" +
-						"┇ Input is not an integer value.    ┇\n" +
+						"┇ Error: \n" +
+						"┇ Input is not an integer value. \n" +
 						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-						"┇ Msg: 				    ┇\n" +
-						"┇ \033[3mPlease enter integer/s input only\033[0m	┇\n" +
+						"┇ Msg: \n" +
+						"┇ \033[3mPlease enter integer/s input only\033[0m \n" +
 						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
 		// @formatter:on
 		System.out.print(prompt);// ask user again for input
@@ -138,8 +137,8 @@ public class Main {
 		// @formatter:off
 		System.out.print("\n" +
 						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-						"┇ Display:			   ┇\n" +
-						"┇ Binary Search Tree    	   ┇\n" +
+						"┇ Display: \n" +
+						"┇ Binary Search Tree \n" +
 						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" + 
 						"┇ Output: ");
 		// @formatter:on
@@ -151,8 +150,8 @@ public class Main {
 		// @formatter:off
 		String menuAsString = "\n" +
 							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
-							"┇ LCA:			    		  ┇\n" +
-							"┇ Please put values to Node A and Node B. ┇\n" +
+							"┇ LCA:	\n" +
+							"┇ Please put values to Node A and Node B. \n" +
 							"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
 							"┇ Input: \n" +
 							"┇ Node A 》 ";
@@ -164,10 +163,10 @@ public class Main {
 		//@formatter:off
 		String menuAsString = "" + 
 						"━━━━━━━━━━━━━━━━━\n"+ 
-						"┃ 【 1 】 Insert	┃\n" +
-						"┃ 【 2 】 Display	┃\n" + 
-						"┃ 【 3 】 LCA 	┃\n" +
-						"┃ 【 4 】 Exit 	┃\n" + 
+						"┃ 【 1 】 Insert \n" +
+						"┃ 【 2 】 Display \n" + 
+						"┃ 【 3 】 LCA \n" +
+						"┃ 【 4 】 Exit \n" + 
 						"━━━━━━━━━━━━━━━━━\n" + 
 						"》 ";
 		//@formatter:on
